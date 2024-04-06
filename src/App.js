@@ -5,21 +5,17 @@ function App() {
   const [tarefaTemp, setTarefaTemp] = useState('');
 
   function cadastrarTarefa() {
-    setTarefas([...tarefas, tarefaTemp])
-    setTarefaTemp('')
+    setTarefas([...tarefas, tarefaTemp]);
+    setTarefaTemp('');
   }
 
   return (
     <div className="App">
-      <input 
-        type="text" 
-        value={tarefaTemp} 
-        onChange={evento => setTarefaTemp(evento.target.value)} 
-      />
-      <button onClick={cadastrarTarefa} type="button">cadastrar</button>
+      <input data-testid="campo-tarefa" type="text" value={tarefaTemp} onChange={evento => setTarefaTemp(evento.target.value)} />
+      <button data-testid="btn-cadastrar" onClick={cadastrarTarefa} type="button">cadastrar</button>
       <ul>
-        {tarefas.map(tarefa => (
-          <li>{tarefa}</li>
+        {tarefas.map((tarefa) => (
+          <li key={tarefa}>{tarefa}</li>
         ))}
       </ul>
     </div>
@@ -27,3 +23,4 @@ function App() {
 }
 
 export default App;
+
